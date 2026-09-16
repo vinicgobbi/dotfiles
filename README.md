@@ -8,7 +8,10 @@ Este repositório reúne configs de terminal, shell, aplicativos e ferramentas q
 
 - `config/` — configurações ativas dos apps do dia a dia (sway, waybar,
   swaylock, alacritty, fuzzel, wlogout, dunst, cava, flameshot, nwg-look,
-  solaar)
+  solaar). `config/hypr/` e `config/omarchy/` guardam só os arquivos que
+  eu de fato customizei em cima do [Omarchy](https://omarchy.org/) (o resto
+  fica no default do pacote); `config/omarchy/plugins/README.md` lista os
+  plugins do shell com o link de cada um, sem versionar o código deles
 - `legacy/` — setups antigos mantidos só como referência (i3 + polybar,
   tema pywal/xrdb), não usados nem instalados por nenhum script deste repo
 - `oh-my-zsh/custom/` — aliases, plugins e temas personalizados para o Zsh
