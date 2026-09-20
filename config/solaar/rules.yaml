@@ -2,14 +2,10 @@
 ---
 - Rule:
   - Test: [thumb_wheel_up, 2]
-  - KeyPress:
-    - XF86_AudioRaiseVolume
-    - click
+  - Execute: [omarchy-audio-output-volume, '+2']
 - Rule:
   - Test: [thumb_wheel_down, 2]
-  - KeyPress:
-    - XF86_AudioLowerVolume
-    - click
+  - Execute: [omarchy-audio-output-volume, '-2']
 ...
 ---
 - Rule:
