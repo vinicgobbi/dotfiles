@@ -46,3 +46,9 @@ o.bind("SUPER + SHIFT + S", "Screenshot", "omarchy-capture-screenshot")
 
 -- SUPER + SHIFT + R -> Gravação de tela (mesmo comando do ALT+PRINT)
 o.bind("SUPER + SHIFT + R", "Screenrecording", "omarchy-capture-screenrecording --stop-recording || omarchy-menu toggle trigger.capture.screenrecord")
+
+-- Inverte SUPER + SPACE (Apps menu) com SUPER + ALT + SPACE (Omarchy menu)
+hl.unbind("SUPER + SPACE")
+hl.unbind("SUPER + ALT + SPACE")
+o.bind("SUPER + SPACE", "Apps menu", "omarchy-menu toggle apps")
+o.bind("SUPER + ALT + SPACE", "Omarchy menu", "omarchy-menu toggle")
