@@ -34,7 +34,7 @@ Este repositório reúne configs de terminal, shell, aplicativos e ferramentas q
   ferramental de SQL Server, Solaar, Flatpaks, Tailscale, Chrome + Git
   Credential Manager, Bitwarden, todo o Sway (chama `install-sway.sh`), o
   ambiente do usuário (chama `bootstrap.sh`), Rust tools, Claude Code,
-  extensão do VSCode no Nautilus, perfis OpenVPN (`.ovpn` em `OVPN/`) e
+  extensões do VSCode e de copiar caminho no Nautilus, perfis OpenVPN (`.ovpn` em `OVPN/`) e
   virt-manager. Não instala jogos (Steam/Heroic/ProtonPlus/PrismLauncher) de
   propósito. Idempotente — pode rodar sozinho ou como próximo passo depois
   do `install-sway.sh`.

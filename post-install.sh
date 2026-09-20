@@ -5,7 +5,7 @@
 # Credential Manager, Bitwarden, todo o ambiente Sway (waybar, swaylock,
 # fuzzel, wlogout, dunst, cava, flameshot — via install-sway.sh), o ambiente
 # de usuário (zsh/Oh My Zsh/fnm via bootstrap.sh), Rust tools, Claude Code,
-# extensão do VSCode no Nautilus, importação de perfis OpenVPN e
+# extensões do VSCode e de copiar caminho no Nautilus, importação de perfis OpenVPN e
 # virt-manager (QEMU/KVM). Baseado no projeto post_install
 # (https://github.com/vinicgobbi/post_install), portado para pacman/AUR —
 # NÃO instala nada de jogos (Steam/Heroic/ProtonPlus/PrismLauncher) de
@@ -195,11 +195,14 @@ fi
 echo "==> Claude Code"
 curl -fsSL https://claude.ai/install.sh | bash
 
-echo "==> Extensão do VSCode no Nautilus"
-sudo pacman -S --needed nautilus-python
+echo "==> Extensões do Nautilus (VSCode e copiar caminho)"
+sudo pacman -S --needed nautilus-python wl-clipboard xclip
 rm -rf /tmp/vscode_nautilus
 git clone https://github.com/vinicgobbi/vscode_nautilus.git /tmp/vscode_nautilus
 bash /tmp/vscode_nautilus/install.sh
+rm -rf /tmp/nautilus-copypath
+git clone https://github.com/vinicgobbi/nautilus-copypath.git /tmp/nautilus-copypath
+bash /tmp/nautilus-copypath/install.sh
 
 echo "==> Perfis OpenVPN"
 sudo pacman -S --needed networkmanager-openvpn
