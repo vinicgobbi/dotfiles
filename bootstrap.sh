@@ -98,6 +98,13 @@ $PATH_LINE" "$ZSHRC"
   fi
 fi
 
+# Rodando via "su - usuario" (como no post-install), não há sessão D-Bus no
+# ambiente e o gsettings grava num backend em memória, descartando tudo sem
+# erro. Se o usuário tem uma sessão gráfica aberta, usa o barramento dela.
+if [[ -z "${DBUS_SESSION_BUS_ADDRESS:-}" && -S "/run/user/$(id -u)/bus" ]]; then
+  export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
+fi
+
 echo "==> Papel de parede"
 if command -v gsettings >/dev/null 2>&1 && [[ -f "$WALLPAPER" ]]; then
   gsettings set org.gnome.desktop.background picture-uri "file://$WALLPAPER" 2>/dev/null || true
@@ -105,6 +112,17 @@ if command -v gsettings >/dev/null 2>&1 && [[ -f "$WALLPAPER" ]]; then
   echo "  - papel de parede aplicado (GNOME)"
 else
   echo "  - gsettings indisponível (não é GNOME) ou wallpaper não encontrado, pulando"
+fi
+
+echo "==> Passo de volume"
+# A roda lateral do mouse (regras do Solaar) envia as teclas de volume, então
+# quem muda o volume e mostra o OSD é o próprio GNOME; aqui só ajustamos o
+# passo de cada toque para 2%.
+if command -v gsettings >/dev/null 2>&1 &&
+  gsettings set org.gnome.settings-daemon.plugins.media-keys volume-step 2 2>/dev/null; then
+  echo "  - passo de volume do GNOME definido para 2%"
+else
+  echo "  - gsettings indisponível (não é GNOME), pulando"
 fi
 
 echo
