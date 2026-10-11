@@ -15,12 +15,13 @@ Este repositório reúne configs de terminal, shell, aplicativos e ferramentas q
 - `oh-my-zsh/custom/` — aliases, plugins e temas personalizados para o Zsh
 - `oh-my-posh/` — réplica do setup do Zsh (tema, aliases e editor padrão) para PowerShell no Windows
 - `fonts/` — fontes utilizadas nas configurações
-- `Wallpapers/` — papéis de parede
 - `etc/` — arquivos de configuração diversos
 - `bootstrap.sh` — instala Oh My Zsh (se ausente), os plugins do Zsh
   (`zsh-autosuggestions`, `zsh-syntax-highlighting`, `zoxide`), aplica o tema
   e os arquivos de `oh-my-zsh/custom/`, copia fontes e a config do Solaar, e
-  define o papel de parede (GNOME). Idempotente — pode rodar quantas vezes
+  define o passo de volume do GNOME em 2%. O papel de parede não fica mais
+  aqui: as imagens e a escolha estão no
+  [post-install](https://github.com/vinicgobbi/post-install). Idempotente — pode rodar quantas vezes
   quiser. É o script usado tanto localmente quanto pelo módulo
   `ambiente_usuario` do [post_install](https://github.com/vinicgobbi/post_install).
 - `install-sway.sh` — instala o Sway e todo o ecossistema (waybar, swaylock,

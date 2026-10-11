@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Instala e configura, a partir deste repo, todo o ambiente de shell:
 # Oh My Zsh (se ausente), plugins (zsh-autosuggestions, zsh-syntax-highlighting,
-# zoxide), tema, arquivos custom do Zsh, fontes, config do Solaar e papel de
-# parede. Idempotente: pode rodar quantas vezes quiser.
+# zoxide), tema, arquivos custom do Zsh, fontes, config do Solaar e o passo
+# de volume do GNOME. Idempotente: pode rodar quantas vezes quiser.
+# O papel de parede é escolhido e aplicado pelo post-install.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -11,7 +12,6 @@ ZSHRC="$HOME/.zshrc"
 DESIRED_PLUGINS="plugins=(git zsh-autosuggestions zoxide zsh-syntax-highlighting)"
 DESIRED_THEME='ZSH_THEME="detail"'
 PATH_LINE='export PATH="$HOME/.local/bin:$PATH"'
-WALLPAPER="$SCRIPT_DIR/Wallpapers/jinx-arcane-season-2-4k.jpg"
 
 echo "==> Oh My Zsh"
 if [[ -d "$HOME/.oh-my-zsh" ]]; then
@@ -103,15 +103,6 @@ fi
 # erro. Se o usuário tem uma sessão gráfica aberta, usa o barramento dela.
 if [[ -z "${DBUS_SESSION_BUS_ADDRESS:-}" && -S "/run/user/$(id -u)/bus" ]]; then
   export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
-fi
-
-echo "==> Papel de parede"
-if command -v gsettings >/dev/null 2>&1 && [[ -f "$WALLPAPER" ]]; then
-  gsettings set org.gnome.desktop.background picture-uri "file://$WALLPAPER" 2>/dev/null || true
-  gsettings set org.gnome.desktop.background picture-uri-dark "file://$WALLPAPER" 2>/dev/null || true
-  echo "  - papel de parede aplicado (GNOME)"
-else
-  echo "  - gsettings indisponível (não é GNOME) ou wallpaper não encontrado, pulando"
 fi
 
 echo "==> Passo de volume"
